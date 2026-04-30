@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avtomobil — JAC Motors Navoiy</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>if(localStorage.getItem('theme')==='light')document.body.classList.add('light');</script>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo"><div class="logo-icon"><span>JAC</span></div><div class="logo-text"><p>JAC MOTORS</p><p>NAVOIY</p></div></a>
+      <div class="nav-links"><a href="catalog.html">Katalog</a><a href="#">Kreditlar</a><a href="#">Servis</a><a href="#">Aloqa</a></div>
+      <div class="nav-right">
+        <button class="theme-btn" id="theme-btn" onclick="toggleTheme()"></button>
+        <a href="tel:+998901234567" class="phone-btn" id="phone-btn"></a>
+        <button class="mobile-toggle" onclick="toggleMobileMenu()" id="menu-toggle"></button>
+      </div>
+    </div>
+  </nav>
+
+  <main style="padding-top:80px" id="content">
+    <section class="container" style="padding:32px 24px 100px">
+
+      <nav class="breadcrumb anim-1">
+        <a href="index.html">Bosh sahifa</a><span class="sep">/</span>
+        <a href="catalog.html">Katalog</a><span class="sep">/</span>
+        <span id="crumb-model">—</span>
+      </nav>
+
+      <div style="display:grid;grid-template-columns:1fr 380px;gap:32px;margin-bottom:48px" id="main-grid" class="anim-2">
+        <!-- GALLERY -->
+        <div>
+          <div class="gallery">
+            <div id="main-media"></div>
+            <button class="gallery-btn prev" onclick="prevImage()" id="btn-prev"></button>
+            <button class="gallery-btn next" onclick="nextImage()" id="btn-next"></button>
+          </div>
+          <div class="thumbs" id="thumbnails" style="margin-top:8px"></div>
+        </div>
+
+        <!-- INFO SIDEBAR -->
+        <aside>
+          <div class="info-card" style="margin-bottom:16px">
+            <p class="section-label" id="brand-label">—</p>
+            <h1 style="font-family:var(--font-head);font-size:28px;font-weight:800;margin:4px 0" id="car-name">—</h1>
+            <p style="font-size:13px;color:var(--text-muted)" id="car-meta">—</p>
+
+            <div style="margin:24px 0;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)" id="price-box">
+              <p style="font-size:32px;font-weight:800;font-family:var(--font-head)">—</p>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <a href="tel:+998901234567" class="btn-primary btn-block" id="call-btn"></a>
+              <button class="btn-outline btn-block" onclick="contactDemo()" id="tg-btn"></button>
+            </div>
+
+            <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border);font-size:13px">
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+                <span style="color:var(--text-muted)">VIN:</span>
+                <span style="font-family:monospace" id="vin-val">—</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span style="color:var(--text-muted)">Holat:</span>
+                <span class="badge-new" id="status-badge">Mavjud</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <p style="font-size:10px;letter-spacing:2px;color:var(--text-muted);font-weight:600;margin-bottom:12px">FILIAL</p>
+            <p style="font-weight:600;margin-bottom:4px">JAC Motors Navoiy</p>
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:8px">Navoiy sh., Islom Karimov ko'chasi 1A</p>
+            <p style="font-size:12px;color:var(--text-muted)">Du-Sha 9:00 — 19:00</p>
+          </div>
+        </aside>
+      </div>
+
+      <!-- SPECS & DESCRIPTION -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px" class="reveal">
+        <div class="info-card">
+          <h2 style="font-family:var(--font-head);font-size:18px;font-weight:700;margin-bottom:20px">Texnik xususiyatlar</h2>
+          <table class="spec-table" id="spec-table"><tbody></tbody></table>
+        </div>
+        <div class="info-card">
+          <h2 style="font-family:var(--font-head);font-size:18px;font-weight:700;margin-bottom:20px">Tavsif</h2>
+          <p style="font-size:14px;line-height:1.8;color:var(--text-muted)" id="description">—</p>
+        </div>
+      </div>
+
+      <!-- FEATURES -->
+      <div class="reveal" style="margin-bottom:48px">
+        <h2 style="font-family:var(--font-head);font-size:24px;font-weight:800;margin-bottom:24px">Komplektatsiya</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px" id="features-grid"></div>
+      </div>
+
+      <!-- RELATED -->
+      <div class="reveal" id="related-section" style="display:none">
+        <h2 style="font-family:var(--font-head);font-size:24px;font-weight:800;margin-bottom:24px">O'xshash avtomobillar</h2>
+        <div class="cars-grid" id="related-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><div class="footer-bottom" style="margin-top:0;padding-top:0;border:none">
+      <p>&copy; 2026 JAC Motors Navoiy. Barcha huquqlar himoyalangan.</p>
+    </div></div>
+  </footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    let _idx = 0, _media = []; // _imgs → _media
+
+    function changeImage(i) {
+      if (i < 0 || i >= _media.length) return;
+      _idx = i;
+      const item = _media[i];
+      const container = document.getElementById('main-media');
+
+      if (item.type === 'video') {
+        container.innerHTML = `
+          <video src="${item.src}" controls playsinline preload="metadata"
+            poster="${_media.find(m => m.type === 'image')?.src || ''}"
+            style="width:100%;height:100%;object-fit:cover;border-radius:inherit">
+          </video>`;
+      } else {
+        container.innerHTML = `<img src="${item.src}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">`;
+      }
+
+      document.querySelectorAll('.thumb').forEach((el, j) => {
+        el.classList.toggle('active', j === i);
+      });
+    }
+
+    function nextImage() { changeImage((_idx + 1) % _media.length); }
+    function prevImage() { changeImage((_idx - 1 + _media.length) % _media.length); }
+    function contactDemo() { alert("Demo rejimda. Real loyihada Telegram'ga yoziladi."); }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Nav icons
+      document.getElementById('phone-btn').innerHTML = `${icon('phone')} <span class="phone-text">+998 (90) 123-45-67</span>`;
+      document.getElementById('menu-toggle').innerHTML = icon('menu');
+      document.getElementById('btn-prev').innerHTML = icon('arrowLeft');
+      document.getElementById('btn-next').innerHTML = icon('arrowRight');
+
+      const car = CARS.find(c => c.id === parseInt(new URLSearchParams(location.search).get('id')));
+      if (!car) {
+        document.getElementById('content').innerHTML = `<div style="text-align:center;padding:120px 20px"><h1 style="font-family:var(--font-head);font-size:24px;margin-bottom:16px">Avtomobil topilmadi</h1><a href="catalog.html" class="btn-primary">Katalogga qaytish</a></div>`;
+        return;
+      }
+
+      document.title = `${car.brand} ${car.model} (${car.year}) — JAC Motors Navoiy`;
+      document.getElementById('crumb-model').textContent = `${car.brand} ${car.model}`;
+      document.getElementById('brand-label').textContent = car.brand;
+      document.getElementById('car-name').textContent = car.model;
+      document.getElementById('car-meta').textContent = `${car.year} · ${car.body}`;
+      document.getElementById('vin-val').textContent = car.vin;
+
+      // Price
+      const pb = document.getElementById('price-box');
+      if (car.discount) {
+        pb.innerHTML = `<p style="font-size:13px;color:var(--text-muted);text-decoration:line-through">${fmt(car.price)}</p>
+          <p style="font-size:32px;font-weight:800;font-family:var(--font-head);color:var(--accent)">${fmt(car.discount)}</p>
+          <p style="font-size:12px;color:var(--success);margin-top:4px">${disc(car)}% chegirma — ${fmt(car.price-car.discount)} tejaysiz</p>`;
+      } else {
+        pb.innerHTML = `<p style="font-size:32px;font-weight:800;font-family:var(--font-head)">${fmt(car.price)}</p>`;
+      }
+
+      // Buttons
+      document.getElementById('call-btn').innerHTML = `${icon('phone')} Qo'ng'iroq qilish`;
+      document.getElementById('tg-btn').innerHTML = `${icon('message')} Yozish (Telegram)`;
+
+      // Gallery
+      _media = [
+        ...car.imgs.map(src => ({ type: 'image', src })),
+        ...(car.video || []).map(src => ({ type: 'video', src }))
+      ];
+      changeImage(0);
+
+      const thumbsEl = document.getElementById('thumbnails');
+      if (_media.length > 1) {
+        thumbsEl.style.gridTemplateColumns = `repeat(${Math.min(_media.length, 6)}, 1fr)`;
+        thumbsEl.innerHTML = _media.map((item, i) => `
+          <div class="thumb ${i === 0 ? 'active' : ''}" onclick="changeImage(${i})">
+            ${item.type === 'video'
+              ? `<div class="thumb-video-wrap">
+                   <img src="${car.img}" alt="Video">
+                   <span class="thumb-play">${icon('play')}</span>
+                 </div>`
+              : `<img src="${item.src}" alt="">`
+            }
+          </div>
+        `).join('');
+      } else {
+        thumbsEl.style.display = 'none';
+      }
+
+
+      // Specs
+      const specs = [
+        ['Motor hajmi', car.engine > 0 ? `${car.engine} L` : 'Elektr'],
+        ['Ot kuchi', `${car.hp} HP`],
+        ['Yoqilg\'i', car.fuel],
+        ['Uzatma', car.trans],
+        ['Haydash', car.drive],
+        ['0-100 km/s', `${car.accel} sek`],
+        ['Yoqilg\'i sarfi', car.consumption > 0 ? `${car.consumption} L/100km` : '—'],
+        ['O\'rindiqlar', car.seats],
+      ];
+      document.getElementById('spec-table').querySelector('tbody').innerHTML = specs.map(([k,v]) =>
+        `<tr><td>${k}</td><td>${v}</td></tr>`
+      ).join('');
+
+      // Description
+      document.getElementById('description').textContent = car.desc;
+
+      // Features
+      document.getElementById('features-grid').innerHTML = Object.entries(car.features).map(([cat, items]) => `
+        <div class="feature-card">
+          <h3>${cat.toUpperCase()}</h3>
+          ${items.map(item => `<div class="feature-item">${icon('check')} ${item}</div>`).join('')}
+        </div>
+      `).join('');
+
+      // Related
+      const related = CARS.filter(c => c.bodySlug === car.bodySlug && c.id !== car.id).slice(0, 3);
+      if (related.length) {
+        document.getElementById('related-section').style.display = 'block';
+        document.getElementById('related-grid').innerHTML = related.map(renderCarCard).join('');
+      }
+    });
+  </script>
+</body>
+</html>

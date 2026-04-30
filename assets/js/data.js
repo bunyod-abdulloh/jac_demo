@@ -1,0 +1,38 @@
+const CARS = [
+  { id:1, model:"J7", brand:"JAC", year:2026, body:"SUV", bodySlug:"suv", fuel:"Benzin", fuelSlug:"petrol", trans:"CVT", drive:"AWD", engine:1.5, hp:218, accel:8.5, consumption:7.2, seats:5, color:"#1A1A1A", colorName:"Qora", vin:"LJN6X8E3XPA000123", price:28500, discount:24900, featured:true,
+    img:"assets/img/J7_1.webp",
+    imgs:["assets/img/J7_1.webp","assets/img/J7_2.webp","assets/img/J7_3.webp","assets/img/J7_4.webp", "assets/img/J7_5.webp", "assets/img/J7_6.webp", "assets/img/J7_7.webp"],
+    video:["https://jacen.jac.com.cn/_nuxt/videos/j7.4eef3b9.mp4"],
+    desc:"JAC J7 — premium klassdagi SUV avtomobil. Zamonaviy dizayn, kuchli motor va eng so'nggi xavfsizlik tizimlari bilan.",
+    features:{"Xavfsizlik":["ABS","ESP","6 ta airbag","Lane Assist","Avtomatik tormoz"],"Qulaylik":["Klimat-control","Isitiladigan o'rindiqlar","Cruise control"],"Multimediya":["10\" ekran","Apple CarPlay","Android Auto","JBL audio"]}},
+  { id:2, model:"Js6", brand:"JAC", year:2025, body:"SUV", bodySlug:"suv", fuel:"Benzin", fuelSlug:"petrol", trans:"Avtomat", drive:"FWD", engine:1.5, hp:136, accel:11.2, consumption:6.4, seats:5, color:"#FFFFFF", colorName:"Oq", vin:"LJN4X8E3XPA000456", price:18500, discount:null, featured:true,
+    img:"assets/img/Js6_1.jpg",
+    imgs:["assets/img/Js6_1.jpg", "assets/img/Js6_2.jpg", "assets/img/Js6_3.jpg", "assets/img/Js6_4.jpg"],
+    desc:"JAC Js6 — kompakt va tejamkor SUV. Shahar yo'llari uchun ideal.",
+    features:{"Xavfsizlik":["ABS","ESP","4 ta airbag"],"Qulaylik":["Klimat-control","Elektr oynalar"],"Multimediya":["8\" ekran","Bluetooth","USB"]}},
+  { id:3, model:"T9", brand:"JAC", year:2025, body:"Pickup", bodySlug:"pickup", fuel:"Dizel", fuelSlug:"diesel", trans:"Avtomat", drive:"4WD", engine:2.0, hp:170, accel:12.8, consumption:8.5, seats:5, color:"#C0C0C0", colorName:"Kumush", vin:"LJNT9X8E3XPA00789", price:32400, discount:28400, featured:true,
+    img:"assets/img/T9_2.png",
+    imgs:["assets/img/T9_0.png", "assets/img/T9_1.png", "assets/img/T9_2.png", "assets/img/T9_4.jpg"],
+    video:["https://jacen.jac.com.cn/video/models/T8PRO.mp4"],
+    desc:"JAC T9 — kuchli va ishonchli pickup. Og'ir ish uchun yaratilgan.",
+    features:{"Xavfsizlik":["ABS","ESP","7 ta airbag","Hill descent"],"Qulaylik":["Klimat-control","Isitiladigan o'rindiqlar","Cruise control"],"Multimediya":["10.4\" ekran","Apple CarPlay","Android Auto"],"Tashqi":["LED chiroqlar","18\" disklar","Tonneau cover"]}},
+  { id:4, model:"J7", brand:"JAC", year:2025, body:"Sedan", bodySlug:"sedan", fuel:"Benzin", fuelSlug:"petrol", trans:"DCT", drive:"FWD", engine:1.5, hp:184, accel:9.5, consumption:6.8, seats:5, color:"#C62828", colorName:"Qizil", vin:"LJNJ7X8E3XPA00321", price:21900, discount:null, featured:false,
+    img:"https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&h=500&fit=crop&q=85",
+    imgs:["https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1200&h=750&fit=crop&q=85","https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1200&h=750&fit=crop&q=85"],
+    desc:"JAC J7 — zamonaviy sedan, sport dizayn va premium materiallar bilan.",
+    features:{"Xavfsizlik":["ABS","ESP","6 ta airbag"],"Qulaylik":["Klimat-control","Charm o'rindiqlar","Panoramik tom"],"Multimediya":["12\" ekran","Apple CarPlay","Android Auto"]}},
+  { id:5, model:"iEV7s", brand:"JAC", year:2026, body:"SUV", bodySlug:"suv", fuel:"Elektr", fuelSlug:"electric", trans:"Avtomat", drive:"FWD", engine:0, hp:116, accel:9.8, consumption:0, seats:5, color:"#1565C0", colorName:"Ko'k", vin:"LJNIEV7X8E3PA0654", price:22500, discount:null, featured:true,
+    img:"https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&h=500&fit=crop&q=85",
+    imgs:["https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1200&h=750&fit=crop&q=85","https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=1200&h=750&fit=crop&q=85"],
+    desc:"JAC iEV7s — to'liq elektr SUV. 402 km zaryad bilan masofa.",
+    features:{"Xavfsizlik":["ABS","ESP","4 ta airbag"],"Qulaylik":["Klimat-control","Smart key"],"Multimediya":["10.25\" ekran","Bluetooth"]}},
+  { id:6, model:"Sunray", brand:"JAC", year:2024, body:"MPV", bodySlug:"mpv", fuel:"Dizel", fuelSlug:"diesel", trans:"Mexanik", drive:"RWD", engine:2.8, hp:136, accel:14.5, consumption:9.2, seats:9, color:"#FFFFFF", colorName:"Oq", vin:"LJNSRX8E3XPA00987", price:19800, discount:18200, featured:false,
+    img:"https://images.unsplash.com/photo-1571607388263-1044f9ea01dd?w=800&h=500&fit=crop&q=85",
+    imgs:["https://images.unsplash.com/photo-1571607388263-1044f9ea01dd?w=1200&h=750&fit=crop&q=85"],
+    desc:"JAC Sunray — kommersiya MPV, 9 o'rinli.",
+    features:{"Xavfsizlik":["ABS","2 ta airbag"],"Qulaylik":["Konditsioner","Elektr oynalar"],"Multimediya":["7\" ekran","USB"]}},
+];
+
+const fmt = p => '$' + p.toLocaleString('en-US');
+const disc = c => c.discount ? Math.round((1 - c.discount / c.price) * 100) : 0;
+const finalPrice = c => c.discount || c.price;

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog — JAC Motors Navoiy</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>if(localStorage.getItem('theme')==='light')document.body.classList.add('light');</script>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo"><div class="logo-icon"><span>JAC</span></div><div class="logo-text"><p>JAC MOTORS</p><p>NAVOIY</p></div></a>
+      <div class="nav-links"><a href="catalog.html" class="active">Katalog</a><a href="#">Kreditlar</a><a href="#">Servis</a><a href="#">Aloqa</a></div>
+      <div class="nav-right">
+        <button class="theme-btn" id="theme-btn" onclick="toggleTheme()"></button>
+        <a href="tel:+998901234567" class="phone-btn" id="phone-btn"></a>
+        <button class="mobile-toggle" onclick="toggleMobileMenu()" id="menu-toggle"></button>
+      </div>
+    </div>
+    <div class="container"><div class="mobile-menu" id="mobile-menu"><a href="catalog.html" class="active">Katalog</a><a href="#">Kreditlar</a><a href="#">Servis</a><a href="#">Aloqa</a></div></div>
+  </nav>
+
+  <main style="padding-top:80px">
+    <section class="container" style="padding:32px 24px 100px">
+      <div class="anim-1">
+        <p class="section-label">KATALOG</p>
+        <h1 class="section-title">Avtomobillar</h1>
+        <p style="font-size:14px;color:var(--text-muted);margin-top:8px">Topildi: <strong style="color:var(--text)" id="total-count">0</strong> ta avtomobil</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:260px 1fr;gap:32px;margin-top:32px" class="anim-2">
+        <!-- SIDEBAR -->
+        <aside>
+          <button class="btn-outline btn-sm btn-block" onclick="toggleFilterPanel()" id="filter-toggle-btn" style="display:none;margin-bottom:16px"></button>
+
+          <form class="filter-panel" id="filter-form" onsubmit="event.preventDefault();applyFilters();">
+            <div class="filter-group">
+              <label>QIDIRUV</label>
+              <input type="text" id="f-search" placeholder="Model yoki VIN..." class="input">
+            </div>
+            <div class="filter-group">
+              <label>KUZOV TURI</label>
+              <select id="f-body"><option value="">Barchasi</option><option value="suv">SUV</option><option value="sedan">Sedan</option><option value="pickup">Pickup</option><option value="mpv">MPV</option></select>
+            </div>
+            <div class="filter-group">
+              <label>YOQILG'I</label>
+              <select id="f-fuel"><option value="">Barchasi</option><option value="petrol">Benzin</option><option value="diesel">Dizel</option><option value="electric">Elektr</option></select>
+            </div>
+            <div class="filter-group">
+              <label>HOLATI</label>
+<!--              <div class="radio-group">-->
+<!--                <label><input type="radio" name="cond" value="" checked> Barchasi</label>-->
+<!--                <label><input type="radio" name="cond" value="new"> Yangi</label>-->
+<!--                <label><input type="radio" name="cond" value="used"> Ishlatilgan</label>-->
+<!--              </div>-->
+            </div>
+            <div class="filter-group">
+              <label>NARX ($)</label>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                <input type="number" id="f-min" placeholder="Min">
+                <input type="number" id="f-max" placeholder="Max">
+              </div>
+            </div>
+            <hr class="filter-divider">
+            <button type="submit" class="btn-primary btn-sm btn-block">Qo'llash</button>
+            <button type="button" class="btn-outline btn-sm btn-block" onclick="resetFilters()" style="margin-top:8px">Tozalash</button>
+          </form>
+        </aside>
+
+        <!-- GRID -->
+        <div>
+          <div style="display:flex;justify-content:flex-end;margin-bottom:16px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="font-size:13px;color:var(--text-muted)">Saralash:</span>
+              <select id="f-sort" onchange="applyFilters()" style="padding:8px 12px;font-size:13px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:var(--font-body)">
+                <option value="newest">Yangiliklar</option>
+                <option value="price_asc">Narx ↑</option>
+                <option value="price_desc">Narx ↓</option>
+              </select>
+            </div>
+          </div>
+          <div class="cars-grid" id="cars-grid"></div>
+          <div class="empty-state" id="empty-state" style="display:none">
+            <svg class="icon" style="width:64px;height:64px;color:var(--text-muted);opacity:0.3;margin:0 auto 16px;display:block" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <p style="font-family:var(--font-head);font-size:18px;font-weight:700;margin-bottom:4px">Hech narsa topilmadi</p>
+            <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px">Filterlarni o'zgartirib qayta urinib ko'ring</p>
+            <button onclick="resetFilters()" class="btn-primary btn-sm">Filterlarni tozalash</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="margin-top:0;padding-top:0;border:none">
+        <p>&copy; 2026 JAC Motors Navoiy. Barcha huquqlar himoyalangan.</p>
+        <div><a href="#">Maxfiylik siyosati</a><a href="#">Foydalanish shartlari</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    function applyFilters() {
+      let filtered = [...CARS];
+      const q = document.getElementById('f-search').value.trim().toLowerCase();
+      if (q) filtered = filtered.filter(c => c.model.toLowerCase().includes(q) || c.brand.toLowerCase().includes(q) || c.vin.toLowerCase().includes(q));
+      const body = document.getElementById('f-body').value;
+      if (body) filtered = filtered.filter(c => c.bodySlug === body);
+      const fuel = document.getElementById('f-fuel').value;
+      if (fuel) filtered = filtered.filter(c => c.fuelSlug === fuel);
+      const min = parseInt(document.getElementById('f-min').value) || 0;
+      const max = parseInt(document.getElementById('f-max').value) || Infinity;
+      filtered = filtered.filter(c => finalPrice(c) >= min && finalPrice(c) <= max);
+      const sort = document.getElementById('f-sort').value;
+      if (sort === 'price_asc') filtered.sort((a,b) => finalPrice(a) - finalPrice(b));
+      else if (sort === 'price_desc') filtered.sort((a,b) => finalPrice(b) - finalPrice(a));
+      else filtered.sort((a,b) => b.year - a.year);
+
+      document.getElementById('total-count').textContent = filtered.length;
+      const grid = document.getElementById('cars-grid');
+      const empty = document.getElementById('empty-state');
+      if (filtered.length === 0) { grid.innerHTML = ''; empty.style.display = 'block'; }
+      else { empty.style.display = 'none'; grid.innerHTML = filtered.map(renderCarCard).join(''); }
+    }
+    function resetFilters() {
+      document.getElementById('f-search').value = '';
+      document.getElementById('f-body').value = '';
+      document.getElementById('f-fuel').value = '';
+      document.getElementById('f-min').value = '';
+      document.getElementById('f-max').value = '';
+      document.getElementById('f-sort').value = 'newest';
+      applyFilters();
+    }
+    function toggleFilterPanel() {
+      document.getElementById('filter-form').classList.toggle('panel-hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('phone-btn').innerHTML = `${icon('phone')} <span class="phone-text">+998 (90) 123-45-67</span>`;
+      document.getElementById('menu-toggle').innerHTML = icon('menu');
+      document.getElementById('filter-toggle-btn').innerHTML = `${icon('filter')} Filterlar`;
+
+      // URL params
+      const p = new URLSearchParams(location.search);
+      if (p.has('body_type')) document.getElementById('f-body').value = p.get('body_type');
+      applyFilters();
+    });
+  </script>
+</body>
+</html>
