@@ -30,7 +30,8 @@
         <span id="crumb-model">—</span>
       </nav>
 
-      <div style="display:grid;grid-template-columns:1fr 380px;gap:32px;margin-bottom:48px" id="main-grid" class="anim-2">
+      <!-- inline grid o'rniga .detail-layout class -->
+      <div class="detail-layout anim-2" id="main-grid">
         <!-- GALLERY -->
         <div>
           <div class="gallery">
@@ -45,10 +46,11 @@
         <aside>
           <div class="info-card" style="margin-bottom:16px">
             <p class="section-label" id="brand-label">—</p>
-            <h1 style="font-family:var(--font-head);font-size:28px;font-weight:800;margin:4px 0" id="car-name">—</h1>
+            <h1 id="car-name" style="font-family:var(--font-head);font-size:28px;font-weight:800;margin:4px 0">—</h1>
             <p style="font-size:13px;color:var(--text-muted)" id="car-meta">—</p>
 
-            <div style="margin:24px 0;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)" id="price-box">
+            <div id="price-box"
+                 style="margin:24px 0;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
               <p style="font-size:32px;font-weight:800;font-family:var(--font-head)">—</p>
             </div>
 
@@ -78,8 +80,8 @@
         </aside>
       </div>
 
-      <!-- SPECS & DESCRIPTION -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px" class="reveal">
+      <!-- SPECS & DESCRIPTION — inline grid o'rniga .specs-layout -->
+      <div class="specs-layout reveal">
         <div class="info-card">
           <h2 style="font-family:var(--font-head);font-size:18px;font-weight:700;margin-bottom:20px">Texnik xususiyatlar</h2>
           <table class="spec-table" id="spec-table"><tbody></tbody></table>
@@ -93,7 +95,8 @@
       <!-- FEATURES -->
       <div class="reveal" style="margin-bottom:48px">
         <h2 style="font-family:var(--font-head);font-size:24px;font-weight:800;margin-bottom:24px">Komplektatsiya</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px" id="features-grid"></div>
+        <div id="features-grid"
+             style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px"></div>
       </div>
 
       <!-- RELATED -->
@@ -114,7 +117,7 @@
   <script src="assets/js/data.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
-    let _idx = 0, _media = []; // _imgs → _media
+    let _idx = 0, _media = [];
 
     function changeImage(i) {
       if (i < 0 || i >= _media.length) return;
@@ -142,7 +145,6 @@
     function contactDemo() { alert("Demo rejimda. Real loyihada Telegram'ga yoziladi."); }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Nav icons
       document.getElementById('phone-btn').innerHTML = `${icon('phone')} <span class="phone-text">+998 (90) 123-45-67</span>`;
       document.getElementById('menu-toggle').innerHTML = icon('menu');
       document.getElementById('btn-prev').innerHTML = icon('arrowLeft');
@@ -161,7 +163,6 @@
       document.getElementById('car-meta').textContent = `${car.year} · ${car.body}`;
       document.getElementById('vin-val').textContent = car.vin;
 
-      // Price
       const pb = document.getElementById('price-box');
       if (car.discount) {
         pb.innerHTML = `<p style="font-size:13px;color:var(--text-muted);text-decoration:line-through">${fmt(car.price)}</p>
@@ -171,11 +172,9 @@
         pb.innerHTML = `<p style="font-size:32px;font-weight:800;font-family:var(--font-head)">${fmt(car.price)}</p>`;
       }
 
-      // Buttons
       document.getElementById('call-btn').innerHTML = `${icon('phone')} Qo'ng'iroq qilish`;
       document.getElementById('tg-btn').innerHTML = `${icon('message')} Yozish (Telegram)`;
 
-      // Gallery
       _media = [
         ...car.imgs.map(src => ({ type: 'image', src })),
         ...(car.video || []).map(src => ({ type: 'video', src }))
@@ -200,8 +199,6 @@
         thumbsEl.style.display = 'none';
       }
 
-
-      // Specs
       const specs = [
         ['Motor hajmi', car.engine > 0 ? `${car.engine} L` : 'Elektr'],
         ['Ot kuchi', `${car.hp} HP`],
@@ -216,10 +213,8 @@
         `<tr><td>${k}</td><td>${v}</td></tr>`
       ).join('');
 
-      // Description
       document.getElementById('description').textContent = car.desc;
 
-      // Features
       document.getElementById('features-grid').innerHTML = Object.entries(car.features).map(([cat, items]) => `
         <div class="feature-card">
           <h3>${cat.toUpperCase()}</h3>
@@ -227,7 +222,6 @@
         </div>
       `).join('');
 
-      // Related
       const related = CARS.filter(c => c.bodySlug === car.bodySlug && c.id !== car.id).slice(0, 3);
       if (related.length) {
         document.getElementById('related-section').style.display = 'block';

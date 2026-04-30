@@ -30,7 +30,8 @@
         <p style="font-size:14px;color:var(--text-muted);margin-top:8px">Topildi: <strong style="color:var(--text)" id="total-count">0</strong> ta avtomobil</p>
       </div>
 
-      <div style="display:grid;grid-template-columns:260px 1fr;gap:32px;margin-top:32px" class="anim-2">
+      <!-- inline grid o'rniga .catalog-layout class -->
+      <div class="catalog-layout anim-2">
         <!-- SIDEBAR -->
         <aside>
           <button class="btn-outline btn-sm btn-block" onclick="toggleFilterPanel()" id="filter-toggle-btn" style="display:none;margin-bottom:16px"></button>
@@ -50,11 +51,6 @@
             </div>
             <div class="filter-group">
               <label>HOLATI</label>
-<!--              <div class="radio-group">-->
-<!--                <label><input type="radio" name="cond" value="" checked> Barchasi</label>-->
-<!--                <label><input type="radio" name="cond" value="new"> Yangi</label>-->
-<!--                <label><input type="radio" name="cond" value="used"> Ishlatilgan</label>-->
-<!--              </div>-->
             </div>
             <div class="filter-group">
               <label>NARX ($)</label>
@@ -146,7 +142,6 @@
       document.getElementById('menu-toggle').innerHTML = icon('menu');
       document.getElementById('filter-toggle-btn').innerHTML = `${icon('filter')} Filterlar`;
 
-      // URL params
       const p = new URLSearchParams(location.search);
       if (p.has('body_type')) document.getElementById('f-body').value = p.get('body_type');
       applyFilters();
