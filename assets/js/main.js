@@ -9,7 +9,7 @@ function updateThemeIcon() {
   const btn = document.getElementById('theme-btn');
   if (!btn) return;
   const isLight = document.body.classList.contains('light');
-  btn.innerHTML = isLight ? ICONS.moon : ICONS.sun;
+  btn.innerHTML = icon(isLight ? 'moon' : 'sun');
 }
 if (localStorage.getItem('theme') === 'light') document.body.classList.add('light');
 
