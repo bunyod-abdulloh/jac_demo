@@ -2,7 +2,7 @@ const CARS = [
   { id:1, model:"J7", brand:"JAC", year:2026, body:"SUV", bodySlug:"suv", fuel:"Benzin", fuelSlug:"petrol", trans:"CVT", drive:"AWD", engine:1.5, hp:218, accel:8.5, consumption:7.2, seats:5, color:"#1A1A1A", colorName:"Qora", vin:"LJN6X8E3XPA000123", price:28500, discount:24900, featured:true,
     img:"assets/img/J7_1.webp",
     imgs:["assets/img/J7_1.webp","assets/img/J7_2.webp","assets/img/J7_3.webp","assets/img/J7_4.webp", "assets/img/J7_5.webp", "assets/img/J7_6.webp", "assets/img/J7_7.webp"],
-    video:["https://jacen.jac.com.cn/_nuxt/videos/j7.4eef3b9.mp4"],
+    video:["https://jacen.jac.com.cn/video/models/T8PRO.mp4"],
     desc:"JAC J7 — premium klassdagi SUV avtomobil. Zamonaviy dizayn, kuchli motor va eng so'nggi xavfsizlik tizimlari bilan.",
     features:{"Xavfsizlik":["ABS","ESP","6 ta airbag","Lane Assist","Avtomatik tormoz"],"Qulaylik":["Klimat-control","Isitiladigan o'rindiqlar","Cruise control"],"Multimediya":["10\" ekran","Apple CarPlay","Android Auto","JBL audio"]}},
   { id:2, model:"Js6", brand:"JAC", year:2025, body:"SUV", bodySlug:"suv", fuel:"Benzin", fuelSlug:"petrol", trans:"Avtomat", drive:"FWD", engine:1.5, hp:136, accel:11.2, consumption:6.4, seats:5, color:"#FFFFFF", colorName:"Oq", vin:"LJN4X8E3XPA000456", price:18500, discount:null, featured:true,
